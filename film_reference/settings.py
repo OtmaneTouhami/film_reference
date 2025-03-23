@@ -11,9 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Here we add the names of the apps we created
     'film',
+    'tv_show',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +93,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'film_db',
-        'USER': 'DB_USER',
-        'PASSWORD': 'DB_PASSWORD',
+        'USER': os.getenv('DB_USERNAME'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

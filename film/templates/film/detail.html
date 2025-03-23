@@ -1,46 +1,49 @@
 {% extends 'film/base.html' %}
 
 {% block content %}
-<div class="bg-white rounded-lg shadow-md overflow-hidden">
-    <div class="flex flex-col md:flex-row">
-        <div class="md:w-1/3">
-            <img src="{{ film.poster.url }}" alt="{{ film.title }} poster" class="w-full h-full object-cover">
-        </div>
-        <div class="p-8 md:w-2/3">
-            <h1 class="text-3xl font-bold mb-4">{{ film.title }}</h1>
-            <div class="space-y-2 mb-6">
-                <p class="text-lg"><span class="font-semibold">Director:</span> {{ film.director }}</p>
-                <p class="text-lg"><span class="font-semibold">Year:</span> {{ film.year }}</p>
-                <p class="text-lg">
-                    <span class="font-semibold">Genre:</span>
-                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm ml-2">
-                        {{ film.get_genre_display }}
-                    </span>
-                </p>
-                {% if film.imdb_link %}
-                <p class="text-lg">
-                    <span class="font-semibold">IMDb:</span>
-                    <a href="{{ film.imdb_link }}" target="_blank" class="text-blue-600 hover:underline">
-                        View on IMDb
-                    </a>
-                </p>
-                {% endif %}
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/3">
+                <img src="{{ film.poster.url }}" alt="{{ film.title }} poster" class="w-full h-full object-cover">
             </div>
-            
-            <div class="mb-6">
-                <h2 class="text-xl font-bold mb-2">Description</h2>
-                <p class="text-gray-700 leading-relaxed">{{ film.description|linebreaksbr }}</p>
-            </div>
+            <div class="p-8 md:w-2/3">
+                <h1 class="text-3xl font-bold mb-4">{{ film.title }}</h1>
+                <div class="space-y-2 mb-6">
+                    <p class="text-lg"><span class="font-semibold">Director:</span> {{ film.director }}</p>
+                    <p class="text-lg"><span class="font-semibold">Year:</span> {{ film.year }}</p>
+                    <p class="text-lg">
+                        <span class="font-semibold">Genre:</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm ml-2">
+                        {% for genre in film.genres.all %}{{ genre.name }}{% if not forloop.last %},
+                        {% endif %}{% endfor %}
+                   </span>
+                    </p>
+                    {% if film.imdb_link %}
+                        <p class="text-lg">
+                            <span class="font-semibold">IMDb:</span>
+                            <a href="{{ film.imdb_link }}" target="_blank" class="text-blue-600 hover:underline">
+                                View on IMDb
+                            </a>
+                        </p>
+                    {% endif %}
+                </div>
 
-            <div class="flex space-x-4">
-                <a href="{% url 'update' film.id %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Edit Film
-                </a>
-                <button onclick="confirmDelete({{ film.id }})" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                    Delete Film
-                </button>
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold mb-2">Description</h2>
+                    <p class="text-gray-700 leading-relaxed">{{ film.description|linebreaksbr }}</p>
+                </div>
+
+                <div class="flex space-x-4">
+                    <a href="{% url 'update' film.id %}"
+                       class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Edit Film
+                    </a>
+                    <button onclick="confirmDelete({{ film.id }})"
+                            class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                        Delete Film
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
