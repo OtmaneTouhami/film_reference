@@ -1,0 +1,28 @@
+{% extends 'film/base.html' %}
+
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for film in films %}
+    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+        <img src="{{ film.poster.url }}" alt="{{ film.title }} poster" class="w-full h-64 object-cover">
+        <div class="p-4">
+            <h3 class="text-xl font-bold mb-2">{{ film.title }}</h3>
+            <p class="text-gray-600 mb-2">{{ film.director }} ({{ film.year }})</p>
+            <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm">
+                {{ film.get_genre_display }}
+            </span>
+            <div class="mt-4">
+                <a href="{% url 'detail' film.id %}" class="text-blue-600 hover:text-blue-800">View Details →</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-span-full text-center py-12">
+        <p class="text-gray-600 text-lg">No films found. Why not add one?</p>
+        <a href="{% url 'create' %}" class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            Add Your First Film
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

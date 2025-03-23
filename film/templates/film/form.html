@@ -1,0 +1,66 @@
+{% extends 'film/base.html' %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">
+        {% if form.instance.id %}Edit{% else %}Add New{% endif %} Film
+    </h2>
+    
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
+                {{ field.label }}
+            </label>
+            {% if field.name == 'poster' %}
+                <div class="mb-4">
+                    {% if form.instance.poster %}
+                        <img id="current-poster" src="{{ form.instance.poster.url }}"
+                             class="mb-4 w-48 h-64 object-cover rounded-lg shadow-md">
+                    {% endif %}
+                    <img id="poster-preview" src="#"
+                         class="mb-4 w-48 h-64 object-cover rounded-lg shadow-md hidden">
+                    {{ field }}
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+            {% if field.help_text %}
+            <p class="text-gray-500 text-xs italic mt-1">{{ field.help_text }}</p>
+            {% endif %}
+            {% for error in field.errors %}
+            <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="flex justify-end space-x-4">
+            <a href="{% url 'index' %}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
+                Cancel
+            </a>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                Save Film
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Image preview functionality
+    const posterInput = document.querySelector('input[type="file"]');
+    const posterPreview = document.getElementById('poster-preview');
+    const currentPoster = document.getElementById('current-poster');
+
+    posterInput.addEventListener('change', function(e) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            posterPreview.src = reader.result;
+            posterPreview.classList.remove('hidden');
+            if(currentPoster) currentPoster.classList.add('hidden');
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
+</script>
+{% endblock %}
