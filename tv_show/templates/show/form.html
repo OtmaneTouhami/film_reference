@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}{% if form.instance.id %}Edit{% else %}Add New{% endif %} Film | Media Vault{% endblock %}
-{% block header %}{% if form.instance.id %}Edit{% else %}Add New{% endif %} Film{% endblock %}
+{% block title %}{% if form.instance.id %}Edit{% else %}Add New{% endif %} TV Show | Media Vault{% endblock %}
+{% block header %}{% if form.instance.id %}Edit{% else %}Add New{% endif %} TV Show{% endblock %}
 
 {% block content %}
 <div class="bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold text-gray-800 mb-6">
-        {% if form.instance.id %}Edit "{{ form.instance.title }}"{% else %}Add New Film{% endif %}
+        {% if form.instance.id %}Edit "{{ form.instance.title }}"{% else %}Add New TV Show{% endif %}
     </h2>
 
     <form method="post" enctype="multipart/form-data" class="space-y-8">
@@ -37,15 +37,49 @@
                     {% endif %}
                 </div>
 
-                <!-- Year -->
-                <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.year.id_for_label }}">
-                        {{ form.year.label }}
-                    </label>
-                    {{ form.year }}
-                    {% if form.year.errors %}
-                    <p class="text-red-500 text-xs italic mt-1">{{ form.year.errors.0 }}</p>
-                    {% endif %}
+                <!-- Years -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.start_year.id_for_label }}">
+                            Start Year
+                        </label>
+                        {{ form.start_year }}
+                        {% if form.start_year.errors %}
+                        <p class="text-red-500 text-xs italic mt-1">{{ form.start_year.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.end_year.id_for_label }}">
+                            End Year
+                        </label>
+                        {{ form.end_year }}
+                        <p class="text-gray-500 text-xs italic mt-1">Leave empty if still running</p>
+                        {% if form.end_year.errors %}
+                        <p class="text-red-500 text-xs italic mt-1">{{ form.end_year.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Seasons/Episodes -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.seasons.id_for_label }}">
+                            Seasons
+                        </label>
+                        {{ form.seasons }}
+                        {% if form.seasons.errors %}
+                        <p class="text-red-500 text-xs italic mt-1">{{ form.seasons.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.episodes.id_for_label }}">
+                            Episodes
+                        </label>
+                        {{ form.episodes }}
+                        {% if form.episodes.errors %}
+                        <p class="text-red-500 text-xs italic mt-1">{{ form.episodes.errors.0 }}</p>
+                        {% endif %}
+                    </div>
                 </div>
 
                 <!-- Links -->
@@ -119,11 +153,11 @@
         </div>
 
         <div class="flex justify-end space-x-4 pt-4 border-t border-gray-100">
-            <a href="{% url 'index' %}" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-300 transition">
+            <a href="{% url 'tv_show_index' %}" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-300 transition">
                 Cancel
             </a>
             <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
-                {% if form.instance.id %}Update{% else %}Save{% endif %} Film
+                {% if form.instance.id %}Update{% else %}Save{% endif %} TV Show
             </button>
         </div>
     </form>

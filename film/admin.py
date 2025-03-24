@@ -1,11 +1,5 @@
 from django.contrib import admin
-from .models import Film, Genre
-
-
-@admin.register(Genre)
-class GenreAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug')
-    prepopulated_fields = {'slug': ('name',)}
+from .models import Film
 
 
 @admin.register(Film)
@@ -16,7 +10,8 @@ class FilmAdmin(admin.ModelAdmin):
     search_fields = ('title', 'director')
     date_hierarchy = 'created_at'
     ordering = ('-year', 'title')
-    fields = ('title', 'director', 'year', 'description', 'genres', 'poster', 'imdb_link', 'created_at', 'updated_at')
+    fields = ('title', 'director', 'year', 'description', 'genres', 'poster', 'trailer_link', 'imdb_link', 'created_at',
+              'updated_at')
     readonly_fields = ('created_at', 'updated_at')
 
     def display_genres(self, obj):

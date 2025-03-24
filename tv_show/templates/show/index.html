@@ -1,54 +1,60 @@
 {% extends 'base.html' %}
 
-{% block title %}Films | Media Vault{% endblock %}
-{% block header %}Films{% endblock %}
-{% block search_url %}{% url 'index' %}{% endblock %}
-{% block search_placeholder %}Search films...{% endblock %}
-{% block clear_search_url %}{% url 'index' %}{% endblock %}
+{% block title %}TV Shows | Media Vault{% endblock %}
+{% block header %}TV Shows{% endblock %}
+{% block search_url %}{% url 'tv_show_index' %}{% endblock %}
+{% block search_placeholder %}Search TV shows...{% endblock %}
+{% block clear_search_url %}{% url 'tv_show_index' %}{% endblock %}
 
 {% block search_options %}
 <option value="title" {% if search_type == 'title' %}selected{% endif %}>Title</option>
 <option value="director" {% if search_type == 'director' %}selected{% endif %}>Director</option>
-<option value="year" {% if search_type == 'year' %}selected{% endif %}>Year</option>
+<option value="start_year" {% if search_type == 'start_year' %}selected{% endif %}>Year</option>
 {% endblock %}
 
 {% block content %}
 <div class="mb-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-gray-800">Browse Films</h1>
-    <a href="{% url 'create' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-        <i class="fas fa-plus mr-2"></i> Add Film
+    <h1 class="text-2xl font-bold text-gray-800">Browse TV Shows</h1>
+    <a href="{% url 'tv_show_create' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+        <i class="fas fa-plus mr-2"></i> Add TV Show
     </a>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {% for film in page_obj %}
+    {% for tv_show in page_obj %}
     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
         <div class="relative h-56 overflow-hidden">
-            <img src="{{ film.poster.url }}" alt="{{ film.title }} poster" class="w-full h-full object-cover">
+            <img src="{{ tv_show.poster.url }}" alt="{{ tv_show.title }} poster" class="w-full h-full object-cover">
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                <h3 class="text-xl font-bold text-white">{{ film.title }}</h3>
-                <p class="text-gray-300">{{ film.director }} ({{ film.year }})</p>
+                <h3 class="text-xl font-bold text-white">{{ tv_show.title }}</h3>
+                <p class="text-gray-300">{{ tv_show.director }} ({{ tv_show.start_year }}{% if tv_show.end_year %} - {{ tv_show.end_year }}{% endif %})</p>
+            </div>
+            <div class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded-full text-xs">
+                {{ tv_show.seasons }} season{% if tv_show.seasons != 1 %}s{% endif %}
             </div>
         </div>
         <div class="p-4">
             <div class="flex flex-wrap gap-2 mb-4">
-                {% for genre in film.genres.all %}
+                {% for genre in tv_show.genres.all %}
                 <span class="inline-block bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
                     {{ genre.name }}
                 </span>
                 {% endfor %}
             </div>
-            <a href="{% url 'detail' film.id %}" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
-                View Details <i class="fas fa-arrow-right ml-2 text-sm"></i>
-            </a>
+            <div class="flex justify-between items-center mt-2">
+                <a href="{% url 'tv_show_detail' tv_show.id %}" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                    View Details <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                </a>
+                <span class="text-gray-500 text-sm">{{ tv_show.episodes }} episodes</span>
+            </div>
         </div>
     </div>
     {% empty %}
     <div class="col-span-full bg-white rounded-xl shadow-md p-12 text-center">
-        <i class="fas fa-film text-gray-300 text-5xl mb-4"></i>
-        <p class="text-gray-600 text-lg mb-4">No films found. Why not add one?</p>
-        <a href="{% url 'create' %}" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
-            Add Your First Film
+        <i class="fas fa-tv text-gray-300 text-5xl mb-4"></i>
+        <p class="text-gray-600 text-lg mb-4">No TV shows found. Why not add one?</p>
+        <a href="{% url 'tv_show_create' %}" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+            Add Your First TV Show
         </a>
     </div>
     {% endfor %}

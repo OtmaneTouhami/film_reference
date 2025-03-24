@@ -1,13 +1,7 @@
 import os
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from core.models import Genre
 
-class Genre(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-    slug = models.SlugField(max_length=20, unique=True)
-
-    def __str__(self):
-        return self.name
 
 class Film(models.Model):
     title = models.CharField(max_length=100)
@@ -17,6 +11,7 @@ class Film(models.Model):
     genres = models.ManyToManyField(Genre)
     poster = models.ImageField(upload_to='posters/')
     imdb_link = models.URLField(blank=True)
+    trailer_link = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
