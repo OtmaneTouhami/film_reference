@@ -15,7 +15,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Action', 'Science Fiction'],
             'imdb_link': 'https://www.imdb.com/title/tt0133093/',
             'poster': 'posters/the_matrix.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=vKQi3bBA1y8'
+            'trailer_link': 'https://youtu.be/nUEQNVV3Gfs?si=LcWKCGnEN_6n3acE'
         },
         {
             'title': 'Inception',
@@ -25,7 +25,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Action', 'Science Fiction', 'Thriller'],
             'imdb_link': 'https://www.imdb.com/title/tt1375666/',
             'poster': 'posters/inception.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=YoHD9XE0Gkk'
+            'trailer_link': 'https://youtu.be/LifqWf0BAOA?si=-PXCWWAcVSEKhQsO'
         },
         {
             'title': 'The Shawshank Redemption',
@@ -35,7 +35,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0111161/',
             'poster': 'posters/the_shawshank_redemption.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=6hB3S9bIaco'
+            'trailer_link': 'https://youtu.be/PLl99DlL6b4?si=PW1HJDfM44zWZ88k'
         },
         {
             'title': 'The Godfather',
@@ -45,7 +45,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Crime', 'Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0068646/',
             'poster': 'posters/the_godfather.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=sY1S34973zA'
+            'trailer_link': 'https://youtu.be/UaVTIH8mujA?si=MXHXGKyZlPxaWBC-'
         },
         {
             'title': 'The Dark Knight',
@@ -55,7 +55,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Action', 'Crime', 'Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0468569/',
             'poster': 'posters/the_dark_knight.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=EXeTwQWrcCQ'
+            'trailer_link': 'https://youtu.be/TQfATDZY5Y4?si=5jlMzgQMYFQDIl4E'
         },
         {
             'title': 'Pulp Fiction',
@@ -65,7 +65,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Crime', 'Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0110912/',
             'poster': 'posters/pulp_fiction.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=s7EdQ4FqbhY'
+            'trailer_link': 'https://youtu.be/tGpTpVyI_OQ?si=HJHclKeDPmTkljvZ'
         },
         {
             'title': 'Forrest Gump',
@@ -75,7 +75,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Drama', 'Romance'],
             'imdb_link': 'https://www.imdb.com/title/tt0109830/',
             'poster': 'posters/forrest_gump.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=uPIEn04Ygd8'
+            'trailer_link': 'https://youtu.be/bLvqoHBptjg?si=7XP9EOMMx_cKlN99'
         },
         {
             'title': 'Fight Club',
@@ -85,7 +85,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0137523/',
             'poster': 'posters/fight_club.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=BdJKm16CoFc'
+            'trailer_link': 'https://youtu.be/dfeUzm6KF4g?si=iSXKQFRU3vZK4iBi'
         },
         {
             'title': 'The Lord of the Rings: The Fellowship of the Ring',
@@ -95,7 +95,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Action', 'Adventure', 'Drama'],
             'imdb_link': 'https://www.imdb.com/title/tt0120737/',
             'poster': 'posters/the_lord_of_the_rings_the_fellowship_of_the_ring.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=V75dMMIW2B4'
+            'trailer_link': 'https://youtu.be/_nZdmwHrcnw?si=mZUhOKGifKdfWrWa'
         },
         {
             'title': 'Star Wars: Episode V - The Empire Strikes Back',
@@ -105,7 +105,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Action', 'Adventure', 'Fantasy'],
             'imdb_link': 'https://www.imdb.com/title/tt0080684/',
             'poster': 'posters/star_wars_episode_v_the_empire_strikes_back.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=96v4Xra6Hgk'
+            'trailer_link': 'https://youtu.be/JNwNXF9Y6kY?si=5eWPSN07qZvzOYbH'
         },
         {
             'title': 'The Silence of the Lambs',
@@ -115,7 +115,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Crime', 'Drama', 'Thriller'],
             'imdb_link': 'https://www.imdb.com/title/tt0102926/',
             'poster': 'posters/the_silence_of_the_lambs.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=W6Mm8WcUEe0'
+            'trailer_link': 'https://youtu.be/6iB21hsprAQ?si=2rEYtdS59v9-BDJe'
         },
         {
             'title': 'Schindler\'s List',
@@ -125,7 +125,7 @@ def create_initial_films(apps, schema_editor):
             'genres': ['Biography', 'Drama', 'History'],
             'imdb_link': 'https://www.imdb.com/title/tt0108052/',
             'poster': 'posters/schindlers_list.jpg',
-            'trailer_link': 'https://www.youtube.com/watch?v=gG22XNhtnoY'
+            'trailer_link': 'https://youtu.be/mxphAlJID9U?si=d0Jk2fmmC741PPeN'
         }
     ]
 

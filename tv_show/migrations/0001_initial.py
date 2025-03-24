@@ -10,16 +10,16 @@ def create_initial_tv_shows(apps, schema_editor):
     tv_shows = [
         {
             'title': 'Severance',
-            'director': 'Dan Erickson',
+            'director': 'Ben Stiller, Dan Erickson',
             'start_year': 2022,
             'end_year': None,
             'seasons': 2,
-            'episodes': 9,
+            'episodes': 19,
             'description': 'Employees at Lumon Industries undergo a surgical procedure that splits their memories between work and personal lives.',
             'genres': ['Drama', 'Thriller', 'Science Fiction'],
             'poster': 'tv_posters/severance.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt12787780/',
-            'trailer_link': 'https://www.youtube.com/watch?v=U9VRJc98xng'
+            'trailer_link': 'https://youtu.be/_UXKlYvLGJY?si=9kRwG0lDZPWaMrJ1'
         },
         {
             'title': 'Breaking Bad',
@@ -32,7 +32,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Crime', 'Drama', 'Thriller'],
             'poster': 'tv_posters/breaking_bad.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt0903747/',
-            'trailer_link': 'https://www.youtube.com/watch?v=HhesaQXLuRY'
+            'trailer_link': 'https://youtu.be/HhesaQXLuRY?si=ZaGmVYAnZjhubZEB'
         },
         {
             'title': 'Game of Thrones',
@@ -45,7 +45,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'Fantasy', 'Adventure'],
             'poster': 'tv_posters/game_of_thrones.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt0944947/',
-            'trailer_link': 'https://www.youtube.com/watch?v=rlR4PJej8JM'
+            'trailer_link': 'https://youtu.be/bjqEWgDVPe0?si=TqWgaTIkoSshID_G'
         },
         {
             'title': 'Stranger Things',
@@ -58,7 +58,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'Science Fiction', 'Horror'],
             'poster': 'tv_posters/stranger_things.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt4574334/',
-            'trailer_link': 'https://www.youtube.com/watch?v=b9EkMc79ZSU'
+            'trailer_link': 'https://youtu.be/b9EkMc79ZSU?si=a5woe0i15OGqzJqm'
         },
         {
             'title': 'The Office',
@@ -71,7 +71,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Comedy'],
             'poster': 'tv_posters/the_office.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt0386676/',
-            'trailer_link': 'https://www.youtube.com/watch?v=WzmnfZunYk4'
+            'trailer_link': 'https://youtu.be/tNcDHWpselE?si=JXncM23QrDYGrOIz'
         },
         {
             'title': 'Friends',
@@ -84,7 +84,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Comedy', 'Romance'],
             'poster': 'tv_posters/friends.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt0108778/',
-            'trailer_link': 'https://www.youtube.com/watch?v=ltmMJntSfQI'
+            'trailer_link': 'https://youtu.be/Zg2LCD5QOJs?si=M2G3p4s55uePf87g'
         },
         {
             'title': 'The Mandalorian',
@@ -97,7 +97,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Action', 'Adventure', 'Science Fiction'],
             'poster': 'tv_posters/the_mandalorian.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt8111088/',
-            'trailer_link': 'https://www.youtube.com/watch?v=aOC8E8z_rJc'
+            'trailer_link': 'https://youtu.be/aOC8E8z_ifw?si=Us8TrFpU0TtIvoWw'
         },
         {
             'title': 'The Crown',
@@ -110,7 +110,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'History'],
             'poster': 'tv_posters/the_crown.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt4786824/',
-            'trailer_link': 'https://www.youtube.com/watch?v=vwkjjnqD9Jw'
+            'trailer_link': 'https://youtu.be/JWtnJjn6ng0?si=G_myNKki5VGCUnt5'
         },
         {
             'title': 'Westworld',
@@ -123,7 +123,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'Science Fiction', 'Western'],
             'poster': 'tv_posters/westworld.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt0475784/',
-            'trailer_link': 'https://www.youtube.com/watch?v=pAwR6w2TBA4'
+            'trailer_link': 'https://youtu.be/kEkZdgWu7mM?si=4lcJRoa9nqv7v2bZ'
         },
         {
             'title': 'Black Mirror',
@@ -136,7 +136,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'Science Fiction', 'Thriller'],
             'poster': 'tv_posters/black_mirror.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt2085059/',
-            'trailer_link': 'https://www.youtube.com/watch?v=2a0KaYmW7wc'
+            'trailer_link': 'https://youtu.be/V0XOApF5nLU?si=1CbcIob52U3Y2aKn'
         },
         {
             'title': 'Sherlock',
@@ -149,7 +149,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Crime', 'Drama', 'Mystery'],
             'poster': 'tv_posters/sherlock.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt1475582/',
-            'trailer_link': 'https://www.youtube.com/watch?v=IrBKwzL3K7s'
+            'trailer_link': 'https://youtu.be/IrBKwzL3K7s?si=haHWocC7vxLx-f_z'
         },
         {
             'title': 'House of Cards',
@@ -162,7 +162,7 @@ def create_initial_tv_shows(apps, schema_editor):
             'genres': ['Drama', 'Political'],
             'poster': 'tv_posters/house_of_cards.jpg',
             'imdb_link': 'https://www.imdb.com/title/tt1856010/',
-            'trailer_link': 'https://www.youtube.com/watch?v=bjZjbjbN5ng0'
+            'trailer_link': 'https://youtu.be/8QnMmpfKWvo?si=0WNxjN__6YAAEE0q'
         }
     ]
 

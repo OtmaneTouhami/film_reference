@@ -40,7 +40,7 @@
         .trailer-container {
             position: relative;
             overflow: hidden;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
         }
 
         .trailer-container iframe {
@@ -61,7 +61,6 @@
             100% { opacity: 1; }
         }
 
-        /* Fix for the scrolling issue */
         html, body {
             height: 100%;
             overflow-x: hidden;
@@ -91,7 +90,9 @@
         <div id="sidebar" class="bg-indigo-900 text-white w-64 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
             <div class="p-4 flex flex-col h-full">
                 <div class="flex items-center justify-between mb-8">
-                    <h1 class="text-2xl font-bold">Media Vault</h1>
+                    <h1 class="text-2xl font-bold">
+                        <a href="{% url 'home' %}">Media Vault</a>
+                    </h1>
                     <button @click="sidebarOpen = !sidebarOpen" class="md:hidden">
                         <i class="fas fa-times text-white"></i>
                     </button>
