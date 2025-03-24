@@ -104,17 +104,6 @@ python manage.py runserver
 - **Admin Interface**: Powerful Django admin for database management
 - **Responsive Design**: Mobile-friendly interface using TailwindCSS
 
-## Development
-
-### Creating Media Directory
-
-Make sure to create the media directory structure for storing uploaded posters:
-
-```bash
-mkdir -p media/posters
-touch media/posters/.gitkeep
-```
-
 ## Troubleshooting
 
 ### Database Connection Issues
