@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.core.paginator import Paginator
@@ -5,6 +6,7 @@ from django.core.paginator import Paginator
 from .models import TVShow
 from .forms import TvShowForm
 
+@login_required
 def index(request):
     search_query = request.GET.get('q', '')
     search_type = request.GET.get('type', 'title')
@@ -33,10 +35,12 @@ def index(request):
         'search_type': search_type
     })
 
+@login_required
 def detail(request, show_id):
     tv_show = TVShow.objects.get(id=show_id)
     return render(request, 'show/detail.html', {'tv_show': tv_show})
 
+@login_required
 def create(request):
     if request.method == 'POST':
         form = TvShowForm(request.POST, request.FILES)
@@ -47,6 +51,7 @@ def create(request):
         form = TvShowForm()
     return render(request, 'show/create.html', {'form': form})
 
+@login_required
 def update(request, show_id):
     show_id = int(show_id)
     try:
@@ -63,6 +68,7 @@ def update(request, show_id):
         form = TvShowForm(instance=tv_show)
     return render(request, 'show/update.html', {'form': form})
 
+@login_required
 @require_POST
 def delete(request, show_id):
     show_id = int(show_id)

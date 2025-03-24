@@ -33,18 +33,18 @@ cd film_reference
 
 ```bash
 # For Windows
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 
 # For macOS/Linux
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 ```
 
 3. **Install required dependencies**
 
 ```bash
-pip install django mysqlclient Pillow
+pip install -r requirements.txt
 ```
 
 ## Database Setup
@@ -57,22 +57,11 @@ CREATE DATABASE film_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 2. **Update database configuration**
 
-Modify the `DATABASES` configuration in settings.py with your credentials:
+Create an .env file in the project root and add the following:
 
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'film_db',
-        'USER': 'DB_USER',
-        'PASSWORD': 'DB_PASSWORD',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': 'SET sql_mode = "STRICT_TRANS_TABLES"',
-        }
-    }
-}
+```
+DB_USERNAME=YOUR_DB_USERNAME
+DB_PASSWORD=YOUR_DB_PASSWORD
 ```
 
 3. **Apply migrations**

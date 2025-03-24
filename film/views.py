@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.core.paginator import Paginator
@@ -5,7 +6,7 @@ from django.core.paginator import Paginator
 from .models import Film
 from .forms import FilmForm
 
-
+@login_required
 def index(request):
     search_query = request.GET.get('q', '')
     search_type = request.GET.get('type', 'title')
@@ -34,10 +35,12 @@ def index(request):
         'search_type': search_type
     })
 
+@login_required
 def detail(request, film_id):
     film = Film.objects.get(id=film_id)
     return render(request, 'film/detail.html', {'film': film})
 
+@login_required
 def create(request):
     if request.method == 'POST':
         form = FilmForm(request.POST, request.FILES)
@@ -48,6 +51,7 @@ def create(request):
         form = FilmForm()
     return render(request, 'film/create.html', {'form': form})
 
+@login_required
 def update(request, film_id):
     film_id = int(film_id)
     try:
@@ -64,6 +68,7 @@ def update(request, film_id):
         form = FilmForm(instance=film)
     return render(request, 'film/update.html', {'form': form})
 
+@login_required
 @require_POST
 def delete(request, film_id):
     film_id = int(film_id)

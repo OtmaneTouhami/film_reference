@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+{% block header %}My Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="px-6 py-4 border-b border-gray-200 flex items-center">
+        <div class="flex-shrink-0 mr-4">
+            <div class="h-20 w-20 rounded-full bg-indigo-600 flex items-center justify-center">
+                <span class="text-2xl font-bold text-white">{{ user.username|first|upper }}</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">{{ user.username }}</h2>
+            <p class="text-gray-600">{{ user.email }}</p>
+        </div>
+    </div>
+
+    <div class="border-b border-gray-200">
+        <dl>
+            <div class="bg-gray-50 px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Username</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.username }}</dd>
+            </div>
+            <div class="bg-white px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Email address</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.email }}</dd>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Date joined</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.date_joined|date:"F j, Y" }}</dd>
+            </div>
+            <div class="bg-white px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Last login</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.last_login|date:"F j, Y, g:i a" }}</dd>
+            </div>
+        </dl>
+    </div>
+
+    <div class="px-6 py-4">
+        <h3 class="font-medium text-lg text-gray-900 mb-4">Account Management</h3>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="{% url 'password_change' %}"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white
+                bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-key mr-2"></i> Change Password
+            </a>
+
+            <a href="{% url 'logout' %}"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700
+                bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+            </a>
+        </div>
+    </div>
+
+    {% if user.films.all or user.tvshows.all %}
+    <div class="px-6 py-4 border-t border-gray-200">
+        <h3 class="font-medium text-lg text-gray-900 mb-4">Your Content</h3>
+
+        {% if user.films.all %}
+        <div class="mb-6">
+            <h4 class="text-md font-medium text-gray-800 mb-2">Films you've added</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for film in user.films.all %}
+                <a href="{% url 'detail' film.id %}" class="block group">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:bg-gray-100 transition">
+                        <h5 class="font-medium text-gray-900 group-hover:text-indigo-600">{{ film.title }}</h5>
+                        <p class="text-sm text-gray-500">{{ film.release_year }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if user.tvshows.all %}
+        <div>
+            <h4 class="text-md font-medium text-gray-800 mb-2">TV Shows you've added</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for show in user.tvshows.all %}
+                <a href="{% url 'tv_show_detail' show.id %}" class="block group">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:bg-gray-100 transition">
+                        <h5 class="font-medium text-gray-900 group-hover:text-indigo-600">{{ show.title }}</h5>
+                        <p class="text-sm text-gray-500">{{ show.first_air_date|date:"Y" }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="text-center mt-6 text-sm text-gray-500">
+    <p>Current date and time: 2025-03-24 21:10:14</p>
+    <p>User: OtmaneTouhami</p>
+</div>
+{% endblock %}
